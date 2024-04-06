@@ -1,0 +1,89 @@
+WindowManager:
+    GrNo:
+    Heads:
+
+<GrNo>:
+    name: "GrNo"
+    BoxLayout:
+        orientation: 'vertical'
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+            Label:
+                text: 'Enter your GR Number :'
+                font_size: 50
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+            TextInput:
+                size_hint: (0.5, None)
+                height: '45dp'  # Set an appropriate height
+                width: '15dp' 
+                multiline: False
+                font_size: 35
+        Button:
+            text: "NEXT" 
+            font_size: 32
+            on_release: app.root.current = "Heads" 
+            size_hint_y: (0.5)
+
+
+
+<Heads>:
+    name: "Heads"
+    BoxLayout:
+        size: root.width, root.height
+        orientation: "vertical"
+
+        Label:
+            text: "Voting for headboy"
+            font_size: 50
+        
+        BoxLayout:
+            size_hint_x: (0.95)
+            padding: 20
+            spacing: 15
+            orientation: "horizontal"
+            Button:
+                padding: [10, 0] 
+                text_size: self.size 
+                valign: 'bottom' 
+                halign: 'center'  
+                background_normal: "boing.jpg"
+                font_size: 30
+            Button:
+                text: "Option 2"
+                padding: [10, 0] 
+                text_size: self.size 
+                valign: 'bottom' 
+                halign: 'center'  
+                background_normal: "boing.jpg"
+                font_size: 30
+                color: [0,0,0,1]
+            Button:
+                text: "Option 3"
+                padding: [10, 0] 
+                text_size: self.size 
+                valign: 'bottom' 
+                halign: 'center'  
+                background_normal: "boing.jpg"
+                font_size: 30
+                color: [0,0,0,1]
+        Label: 
+            text: "Voting for headgirl"
+            font_size: 50
+        BoxLayout:
+            padding: 25
+            spacing: 15
+            orientation: "horizontal"
+            Button:
+                text: "Option 1"
+            Button:
+                text: "Option 2"
+            Button:
+                text: "Option 3"
+        Button:
+            text: "Next"
+            size_hint_y: (0.5)
+
+
