@@ -13,15 +13,15 @@ def fetch_student_info(grno):
         cursor = db_connection.cursor()
 
         # Execute a query to fetch data based on the provided GRNO
-        cursor.execute("SELECT NAME, HOUSE FROM sampledb WHERE GRNO = %s", (grno,))
+        cursor.execute(f"SELECT HOUSE FROM sampledb WHERE GRNO = {grno}")
 
         # Fetch the row from the result set
         row = cursor.fetchone()
 
         # Check if row exists
         if row:
-            name, house = row
-            print(f"Name: {name}, House: {house}")
+            house = row
+            print(f"House: {house}")
         else:
             print("No student found with the provided GRNO.")
 
@@ -36,7 +36,7 @@ def fetch_student_info(grno):
             db_connection.close()
 
 if __name__ == '__main__':
-    grno = input("Enter the GRNO (4 digit number): ")
+    grno = input("Enter the GRNO (5 digit number): ")
     if grno.isdigit() and len(grno) == 5:
         fetch_student_info(grno)
     else:

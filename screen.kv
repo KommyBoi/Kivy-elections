@@ -21,10 +21,12 @@ WindowManager:
                 width: '15dp' 
                 multiline: False
                 font_size: 35
+                id: gr_input
         Button:
             text: "NEXT" 
             font_size: 32
             on_release: app.root.current = "Heads" 
+            on_release: app.root.get_screen('Heads').StoreGr(gr_input)
             size_hint_y: (0.5)
 
 
