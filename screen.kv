@@ -1,6 +1,7 @@
 WindowManager:
     GrNo:
     Heads:
+    InvalidGr:
 
 <GrNo>:
     name: "GrNo"
@@ -25,9 +26,18 @@ WindowManager:
         Button:
             text: "NEXT" 
             font_size: 32
-            on_release: app.root.current = "Heads" 
-            on_release: app.root.get_screen('Heads').StoreGr(gr_input)
+            on_release: app.handle_button(gr_input)
             size_hint_y: (0.5)
+
+<InvalidGr>:
+    name: "InvalidGr" 
+    FloatLayout:
+        Label:
+            text: 'Invalid GR Number, Restart Application!'
+            font_size: 50
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
 
 
