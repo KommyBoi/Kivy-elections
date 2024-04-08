@@ -56,46 +56,54 @@ WindowManager:
             padding: 20
             spacing: 15
             orientation: "horizontal"
-            Button:
-                padding: [10, 0] 
-                text_size: self.size 
-                valign: 'bottom' 
-                halign: 'center'  
+            ToggleButton:
+                group: 'HB'  # Group for headboy options
+                id: HB-1
+                text: "Option 1"
                 background_normal: "boing.jpg"
                 font_size: 30
-            Button:
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionB('HB-1', self.state)
+
+            ToggleButton:
+                group: 'HB'  # Group for headboy options
+                id: HB-2
                 text: "Option 2"
-                padding: [10, 0] 
-                text_size: self.size 
-                valign: 'bottom' 
-                halign: 'center'  
                 background_normal: "boing.jpg"
                 font_size: 30
-                color: [0,0,0,1]
-            Button:
-                text: "Option 3"
-                padding: [10, 0] 
-                text_size: self.size 
-                valign: 'bottom' 
-                halign: 'center'  
-                background_normal: "boing.jpg"
-                font_size: 30
-                color: [0,0,0,1]
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionB('HB-2', self.state)
         Label: 
             text: "Voting for headgirl"
-            font_size: 50
+            font_size: 30
         BoxLayout:
             padding: 25
             spacing: 15
             orientation: "horizontal"
-            Button:
+            ToggleButton:
+                group: 'HG'  # Group for headgirl options
+                id: HG-1
                 text: "Option 1"
-            Button:
+                background_normal: "boing.jpg"
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionG('HG-1', self.state)
+
+            ToggleButton:
+                group: 'HG'  # Group for headgirl options
+                id: HG-2
                 text: "Option 2"
-            Button:
-                text: "Option 3"
+                background_normal: "boing.jpg"
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionG('HG-2', self.state)
         Button:
             text: "Next"
             size_hint_y: (0.5)
+            on_release: app.database.voteUpdateB(); app.database.voteUpdateG()
 
 

@@ -34,6 +34,43 @@ def fetch_student_info(grno):
         if 'db_connection' in locals() and db_connection is not None:
             db_connection.close()
 
+def UpdateVotes(UID):
+    try:
+        # Connect to the MySQL database
+        db_connection = mysql.connector.connect(
+            host="127.0.0.1",
+            user="root",
+            password="",
+            database="elections"
+        )
+
+        # Create cursor object to execute queries
+        cursor = db_connection.cursor()
+
+        # Execute a query to increment votes for a specific candidate
+        cursor.execute(f"UPDATE candidates SET VOTES = VOTES + 1 WHERE UID = '{UID}' ")
+
+        # Commit the changes to the database
+        db_connection.commit()
+
+        # Execute a query to fetch the total number of votes for the candidate
+        # cursor.execute("SELECT VOTES FROM candidates WHERE UID = 'HB-1' ")
+
+        # Fetch the total number of votes for the candidate
+        # total_votes = cursor.fetchone()[0]
+        # print("Total votes ", total_votes)
+
+    except mysql.connector.Error as error:
+        print("Error executing SQL queries:", error)
+
+    finally:
+        # Close cursor and database connection
+        if cursor:
+            cursor.close()
+        if db_connection:
+            db_connection.close()
+
+
 
 def check_entry_exists(value):
     connection = mysql.connector.connect(
