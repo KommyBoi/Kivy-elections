@@ -9,6 +9,7 @@ import mysql.connector
 # gr number not found/invalid
 # already voted
 #Defining diff screens
+kv = Builder.load_file('screen.kv')
 class GrNo(Screen):
     pass
 
@@ -22,7 +23,6 @@ class WindowManager(ScreenManager):
     pass
 
 
-kv = Builder.load_file('screen.kv')
 # class MyElect(Widget):
 #     pass
 

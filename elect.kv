@@ -12,31 +12,42 @@
             padding: 20
             spacing: 15
             orientation: "horizontal"
-            Button:
-                padding: [10, 0] 
-                text_size: self.size 
-                valign: 'bottom' 
-                halign: 'center'  
-                background_normal: "boing.jpg"
-                font_size: 30
-            Button:
-                text: "Option 2"
-                padding: [10, 0] 
-                text_size: self.size 
-                valign: 'bottom' 
-                halign: 'center'  
-                background_normal: "boing.jpg"
-                font_size: 30
-                color: [0,0,0,1]
-            Button:
-                text: "Option 3"
-                padding: [10, 0] 
-                text_size: self.size 
-                valign: 'bottom' 
-                halign: 'center'  
-                background_normal: "boing.jpg"
-                font_size: 30
-                color: [0,0,0,1]
+    ToggleButton:
+        id: option1
+        text: "Option 1"
+        padding: [10, 0] 
+        text_size: self.size 
+        valign: 'bottom' 
+        halign: 'center'  
+        background_normal: "boing.jpg"
+        font_size: 30
+        group: 'options'
+        on_state:
+            root.selected_option = self.text if self.state == 'down' else None
+    ToggleButton:
+        id: option2
+        text: "Option 2"
+        padding: [10, 0] 
+        text_size: self.size 
+        valign: 'bottom' 
+        halign: 'center'  
+        background_normal: "boing.jpg"
+        font_size: 30
+        group: 'options'
+        on_state:
+            root.selected_option = self.text if self.state == 'down' else None
+    ToggleButton:
+        id: option3
+        text: "Option 3"
+        padding: [10, 0] 
+        text_size: self.size 
+        valign: 'bottom' 
+        halign: 'center'  
+        background_normal: "boing.jpg"
+        font_size: 30
+        group: 'options'
+        on_state:
+            root.selected_option = self.text if self.state == 'down' else None
         Label: 
             text: "Voting for headgirl"
             font_size: 50
