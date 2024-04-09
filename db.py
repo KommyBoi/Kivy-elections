@@ -2,7 +2,6 @@ import mysql.connector
 def fetch_student_info(grno):
     try:
         # Connect to the MySQL database
-        global db_connection
         db_connection = mysql.connector.connect(
             host="127.0.0.1",
             user="root",
@@ -21,18 +20,23 @@ def fetch_student_info(grno):
 
         # Check if row exists
         if row:
-            house = row
+            # Fetch the first (and only) column of the row, which corresponds to 'HOUSE'
+            house = row[0]
             print(f"House: {house}")
+            return house  # Return the house information
 
     except mysql.connector.Error as error:
         print("Error fetching data from MySQL database:", error)
 
     finally:
         # Close cursor and database connection
-        if 'cursor' in locals() and cursor is not None:
+        if cursor:
             cursor.close()
-        if 'db_connection' in locals() and db_connection is not None:
+        if db_connection:
             db_connection.close()
+
+def fetch_info(final_num):
+    return fetch_student_info(final_num)
 
 def UpdateVotes(UID):
     try:

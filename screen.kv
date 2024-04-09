@@ -1,7 +1,10 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Gradient kivy_gradient.Gradient
 WindowManager:
     GrNo:
     Heads:
     InvalidGr:
+    AgniSr:
 
 <GrNo>:
     name: "GrNo"
@@ -48,36 +51,43 @@ WindowManager:
         orientation: "vertical"
 
         Label:
-            text: "Voting for headboy"
-            font_size: 50
+            text: "HEADBOY"
+            font_size: 72
         
         BoxLayout:
-            size_hint_x: (0.95)
             padding: 20
-            spacing: 15
+            spacing: 15 
             orientation: "horizontal"
             ToggleButton:
-                group: 'HB'  # Group for headboy options
+                size_hint: (None, None)
+                width: 500
+                height: 350
+                group: 'HB'
                 id: HB-1
                 text: "Option 1"
-                background_normal: "boing.jpg"
+                background_normal: "person.jpg"
                 font_size: 30
-                valign: 'bottom'
-                halign: 'center'
                 on_state: app.options.HandleOptionB('HB-1', self.state)
-
+            Widget: 
+                size_hint_x: 0.5
             ToggleButton:
-                group: 'HB'  # Group for headboy options
+                width: 500
+                height: 350
+                size_hint: (None, None)
+                group: 'HB'  # Group for headgirl options
                 id: HB-2
                 text: "Option 2"
-                background_normal: "boing.jpg"
+                background_normal: "person.jpg"
                 font_size: 30
                 valign: 'bottom'
                 halign: 'center'
                 on_state: app.options.HandleOptionB('HB-2', self.state)
+                padding_x: 50
+
+
         Label: 
             text: "Voting for headgirl"
-            font_size: 30
+            font_size: 50
         BoxLayout:
             padding: 25
             spacing: 15
@@ -91,7 +101,8 @@ WindowManager:
                 valign: 'bottom'
                 halign: 'center'
                 on_state: app.options.HandleOptionG('HG-1', self.state)
-
+            Widget:
+                size_hint_x: 0.8
             ToggleButton:
                 group: 'HG'  # Group for headgirl options
                 id: HG-2
@@ -104,6 +115,94 @@ WindowManager:
         Button:
             text: "Next"
             size_hint_y: (0.5)
+            on_release: app.database.voteUpdateB(); app.database.voteUpdateG();  app.screen_cases.ScreenSwitch()
+
+<AgniSr>: 
+    name: 'AgniSr'
+    BoxLayout:
+        on_kv_post: print(get_color_from_hex("E91E63"))
+        size: root.width, root.height
+        orientation: "vertical"
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                texture: Gradient.horizontal(get_color_from_hex("FF0000"), get_color_from_hex("006A70"))
+
+
+        # Your other widgets go here...
+
+
+
+        Label:
+            text: "KHSG ELECTIONS 2024-25" 
+            font_size: 50
+
+        Label:
+            text: "SR. SPORTS CAPTAIN"
+            font_size: 72
+        
+        BoxLayout:
+            padding: 20
+            spacing: 15 
+            orientation: "horizontal"
+            ToggleButton:
+                size_hint: (None, None)
+                width: 500
+                height: 350
+                group: 'HB'
+                id: HCB-A-1
+                text: "Option 1"
+                background_normal: "person.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionB('HCB-A-1', self.state)
+            Widget: 
+                size_hint_x: 0.5
+            ToggleButton:
+                width: 500
+                height: 350
+                size_hint: (None, None)
+                group: 'HB'  # Group for headgirl options
+                id: HCB-A-2
+                text: "Option 2"
+                background_normal: "person.jpg"
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionB('HCB-A-2', self.state)
+                padding_x: 50
+        Label: 
+            text: "SR. SPORTS CAPTAIN GIRL"
+            font_size: 50
+        BoxLayout:
+            padding: 25
+            spacing: 15
+            orientation: "horizontal"
+            ToggleButton:
+                group: 'HG'  # Group for headgirl options
+                id: HCG-A-1
+                width: 500
+                height: 350
+                text: "Option 1"
+                background_normal: "person.jpg"
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionG('HCG-A-1', self.state)
+            Widget:
+                size_hint_x: 0.8
+            ToggleButton:
+                group: 'HG'  # Group for headgirl options
+                id: HCG-A-2
+                width: 500
+                height: 350
+                text: "Option 2"
+                background_normal: "person.jpg"
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionG('HCG-A-2', self.state)
+        Button:
+            text: "Next"
+            size_hint_y: (0.5)
             on_release: app.database.voteUpdateB(); app.database.voteUpdateG()
-
-
