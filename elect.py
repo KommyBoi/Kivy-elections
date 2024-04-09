@@ -5,6 +5,10 @@ from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from db import fetch_student_info, check_entry_exists, UpdateVotes
+from kivy.uix.popup import Popup # UIX
+from kivy.uix.label import Label # UIX
+from kivy.uix.button import Button # UIX
+from kivy.uix.boxlayout import BoxLayout # UIX
 from kivy.uix.togglebutton import ToggleButton
 import mysql.connector
 # gr number not found/invalid
@@ -55,14 +59,26 @@ class database():
 
 
 
+
     def CheckGr(self):
         validity = check_entry_exists(database.final_num)
-        if validity is not None:  # Assuming final_num is set somewhere in your application
-            App.get_running_app().root.current = 'Heads'  # Switch to 'Heads' screen
-            print(f"from if statement {database.final_num}" )  
+        if validity is not None:
+            App.get_running_app().root.current = 'Heads'
+            print(f"from if statement {database.final_num}")
         else:
-            App.get_running_app().root.current = 'InvalidGr'
-            print(f"from else statement {database.final_num}")    
+            # Creating the close button
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='The entered GR number is invalid.'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Invalid GR Number', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
              
 class ScreenCases:
     def ScreenSwitch(self):
@@ -77,6 +93,10 @@ class ScreenCases:
         else:
             print("Failed to fetch house information.")
 
+
+class PopUps():
+    def GrNoPopUp():
+        pass
 
 class Options():
     def __init__(self, options_instance):
