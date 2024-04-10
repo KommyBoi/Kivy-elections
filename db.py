@@ -13,7 +13,7 @@ def fetch_student_info(grno):
         cursor = db_connection.cursor()
 
         # Execute a query to fetch data based on the provided GRNO
-        cursor.execute(f"SELECT HOUSE FROM sampledb WHERE GRNO = {grno}")
+        cursor.execute(f"SELECT HOUSE FROM students_sample WHERE GRNO = {grno}")
 
         # Fetch the row from the result set
         row = cursor.fetchone()
@@ -52,7 +52,7 @@ def UpdateVotes(UID):
         cursor = db_connection.cursor()
 
         # Execute a query to increment votes for a specific candidate
-        cursor.execute(f"UPDATE candidates SET VOTES = VOTES + 1 WHERE UID = '{UID}' ")
+        cursor.execute(f"UPDATE contestants SET VOTES = VOTES + 1 WHERE UID = '{UID}' ")
 
         # Commit the changes to the database
         db_connection.commit()
@@ -84,7 +84,7 @@ def check_entry_exists(value):
     database="elections"
         )
     cursor = connection.cursor()
-    query = f"SELECT * FROM sampledb WHERE GRNO = %s"
+    query = f"SELECT * FROM students_sample WHERE GRNO = %s"
     cursor.execute(query, (value,))
     result = cursor.fetchone()
     cursor.close()

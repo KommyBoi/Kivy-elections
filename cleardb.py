@@ -8,7 +8,7 @@ try:
     )
     cursor = db_connection.cursor()
 
-    cursor.execute(f"UPDATE candidates SET VOTES = 0")
+    cursor.execute(f"UPDATE contestants SET VOTES = 0")
     db_connection.commit()
 
 except mysql.connector.Error as error:

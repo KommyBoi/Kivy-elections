@@ -5,25 +5,50 @@ from kivy.properties import ObjectProperty
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from db import fetch_student_info, check_entry_exists, UpdateVotes
-from kivy.uix.popup import Popup # UIX
-from kivy.uix.label import Label # UIX
-from kivy.uix.button import Button # UIX
-from kivy.uix.boxlayout import BoxLayout # UIX
 from kivy.uix.togglebutton import ToggleButton
+
+from kivy.uix.popup import Popup #UIX
+from kivy.uix.label import Label #UIX
+from kivy.uix.button import Button #UIX
+from kivy.uix.boxlayout import BoxLayout #UIX
+from kivy.uix.togglebutton import ToggleButton #UIX
+from kivy.config import Config
 import mysql.connector
 # gr number not found/invalid
 # already voted
 #Defining diff screens
+
+Config.set('graphics', 'width', '1600')
+Config.set('graphics', 'height', '900')
+
 class GrNo(Screen):
     pass
 
 class Heads(Screen):
     pass
 
-class AgniSr(Screen):
+class VHeads(Screen):
+    pass
+
+class JHeads(Screen):
     pass
 
 class InvalidGr(Screen):
+    pass
+
+class AgniSr(Screen):
+    pass
+
+class AgniJr(Screen):
+    pass
+
+class SuryaSr(Screen):
+    pass    
+
+class VarunSr(Screen):
+    pass
+
+class VarunJr(Screen):
     pass
 
 class WindowManager(ScreenManager):
@@ -56,7 +81,6 @@ class database():
     def voteUpdateG(self):
         UpdateVotes(self.options_instance.selectGirls)
         print("Uploaded to DB")
-
 
 
 
@@ -94,10 +118,6 @@ class ScreenCases:
             print("Failed to fetch house information.")
 
 
-class PopUps():
-    def GrNoPopUp():
-        pass
-
 class Options():
     def __init__(self, options_instance):
         self.options_instance = options_instance
@@ -129,6 +149,108 @@ class Options():
             if self.selectGirls == option_id:  # If the option was previously selected
                 self.selectGirls = None  # Deselect it
                 print("Deselected option for Girls:", option_id)
+
+    def PopUpH(self):
+        if self.selectBoys and self.selectGirls != None:
+            App.get_running_app().root.current = 'VHeads'
+            self.selectBoys = None
+            self.selectGirls = None
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Headboy and Headgirl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+
+    def PopUpVH(self):
+        if self.selectBoys and self.selectGirls != None:
+            App.get_running_app().root.current = 'JHeads'
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Vice Headboy and Vice Headgirl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+        self.SelectBoys = None
+        self.SelectGirls = None
+
+    def PopUpV(self):
+        if self.selectBoys and self.selectGirls != None:
+            App.get_running_app().root.current = 'VarunJr'
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Sr. Sports captain boy and girl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+        self.SelectBoys = None
+        self.SelectGirls = None
+
+    def PopUpA(self):
+        if self.selectBoys and self.selectGirls != None:
+            App.get_running_app().root.current = 'AgniJr'
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Sr. Sports captain boy and girl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+        self.SelectBoys = None
+        self.SelectGirls = None
+
+
+    def PopUpJH(self):
+        house_switch = fetch_student_info(database.final_num)
+        if self.selectBoys and self.selectGirls != None:
+            if house_switch == 'AGNI':
+                App.get_running_app().root.current = 'AgniSr'
+            elif house_switch == 'VARUN':
+                App.get_running_app().root.current = 'VarunSr'
+            elif house_switch == 'SURYA':
+                App.get_running_app().root.current = 'SuryaSr'
+            self.selectBoys = None
+            self.selectGirls = None
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Jr. Headboy and Jr. Headgirl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
 
 
 class Cool(App):
