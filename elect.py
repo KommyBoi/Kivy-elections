@@ -42,8 +42,17 @@ class AgniSr(Screen):
 class AgniJr(Screen):
     pass
 
+class PrithviSr(Screen):
+    pass
+
+class PrithviJr(Screen):
+    pass
+
 class SuryaSr(Screen):
     pass    
+
+class SuryaJr(Screen):
+    pass
 
 class VarunSr(Screen):
     pass
@@ -51,8 +60,12 @@ class VarunSr(Screen):
 class VarunJr(Screen):
     pass
 
+class EndScreen(Screen):
+    pass
+
 class WindowManager(ScreenManager):
     pass
+
 
 kv = Builder.load_file('screen.kv')
 
@@ -207,9 +220,47 @@ class Options():
         self.SelectBoys = None
         self.SelectGirls = None
 
+    def PopUpP(self):
+        if self.selectBoys and self.selectGirls != None:
+            App.get_running_app().root.current = 'PrithviJr'
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Sr. Sports captain boy and girl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+        self.SelectBoys = None
+        self.SelectGirls = None
+
     def PopUpA(self):
         if self.selectBoys and self.selectGirls != None:
             App.get_running_app().root.current = 'AgniJr'
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Sr. Sports captain boy and girl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                          size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+        self.SelectBoys = None
+        self.SelectGirls = None
+
+    def PopUpS(self):
+        if self.selectBoys and self.selectGirls != None:
+            App.get_running_app().root.current = 'SuryaJr'
         else: 
             close_button = Button(text='CLOSE')
             close_button.bind(on_release=lambda instance: popup.dismiss())
@@ -230,12 +281,14 @@ class Options():
     def PopUpJH(self):
         house_switch = fetch_student_info(database.final_num)
         if self.selectBoys and self.selectGirls != None:
-            if house_switch == 'AGNI':
+            if house_switch == 'Agni':
                 App.get_running_app().root.current = 'AgniSr'
-            elif house_switch == 'VARUN':
+            elif house_switch == 'Varun':
                 App.get_running_app().root.current = 'VarunSr'
-            elif house_switch == 'SURYA':
+            elif house_switch == 'Surya':
                 App.get_running_app().root.current = 'SuryaSr'
+            elif house_switch == 'Prithvi':
+                App.get_running_app().root.current = 'PrithviSr'
             self.selectBoys = None
             self.selectGirls = None
         else: 
@@ -252,6 +305,36 @@ class Options():
             popup.open()
             print(f"from else statement {database.final_num}")
 
+    def EndScreen(self):
+        if self.selectBoys and self.selectGirls != None:
+            close_button = Button(text='CLOSE APP')
+            close_button.bind(on_release=lambda instance: self.CloseApp())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Your votes have been recorded!'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Voting complete', content=popup_content,
+                        size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+        else: 
+            close_button = Button(text='CLOSE')
+            close_button.bind(on_release=lambda instance: popup.dismiss())
+
+            # Creating and showing the popup
+            popup_content = BoxLayout(orientation='vertical')
+            popup_content.add_widget(Label(text='Please select Jr. Sports captain boy and girl'))
+            popup_content.add_widget(close_button)
+
+            popup = Popup(title='Options not selected', content=popup_content,
+                        size_hint=(None, None), size=(400, 200))
+            popup.open()
+            print(f"from else statement {database.final_num}")
+    def CloseApp(self):
+        App.get_running_app().stop()
+
 
 class Cool(App):
     def build(self):
@@ -261,7 +344,6 @@ class Cool(App):
         self.options = self.database.options_instance  # Access the Options instance from the database
         self.screen_cases = ScreenCases()
         return kv
-
 
     def handle_button(self, gr_input):
         self.database.StoreGr(gr_input)

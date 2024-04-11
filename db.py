@@ -1,39 +1,38 @@
 import mysql.connector
+
 def fetch_student_info(grno):
     try:
         # Connect to the MySQL database
-        db_connection = mysql.connector.connect(
+        with mysql.connector.connect(
             host="127.0.0.1",
             user="root",
             password="",
             database="elections"
-        )
+        ) as db_connection:
 
-        # Create cursor object to execute queries
-        cursor = db_connection.cursor()
+            # Create cursor object to execute queries
+            with db_connection.cursor() as cursor:
 
-        # Execute a query to fetch data based on the provided GRNO
-        cursor.execute(f"SELECT HOUSE FROM students_sample WHERE GRNO = {grno}")
+                # Execute a query to fetch data based on the provided GRNO
+                cursor.execute(f"SELECT HOUSE FROM student_list WHERE GRNO = {grno}")
 
-        # Fetch the row from the result set
-        row = cursor.fetchone()
+                # Fetch the row from the result set
+                row = cursor.fetchone()
 
-        # Check if row exists
-        if row:
-            # Fetch the first (and only) column of the row, which corresponds to 'HOUSE'
-            house = row[0]
-            print(f"House: {house}")
-            return house  # Return the house information
+                # Check if row exists
+                if row:
+                    # Fetch the first (and only) column of the row, which corresponds to 'HOUSE'
+                    house = row[0]
+                    print(f"House: {house}")
+                    return house  # Return the house information
 
     except mysql.connector.Error as error:
         print("Error fetching data from MySQL database:", error)
+  # Example usage, replace 123456 with actual GRNO
 
-    finally:
-        # Close cursor and database connection
-        if cursor:
-            cursor.close()
-        if db_connection:
-            db_connection.close()
+
+               
+
 
 def fetch_info(final_num):
     return fetch_student_info(final_num)
@@ -84,7 +83,7 @@ def check_entry_exists(value):
     database="elections"
         )
     cursor = connection.cursor()
-    query = f"SELECT * FROM students_sample WHERE GRNO = %s"
+    query = f"SELECT * FROM student_list WHERE GRNO = %s"
     cursor.execute(query, (value,))
     result = cursor.fetchone()
     cursor.close()

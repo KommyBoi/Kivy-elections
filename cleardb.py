@@ -1,9 +1,9 @@
 import mysql.connector
 try:
     db_connection = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="",
+        host="192.168.1.125",
+        user="khsg",
+        password="Chunav@24",
         database="elections"
     )
     cursor = db_connection.cursor()
@@ -14,8 +14,8 @@ try:
 except mysql.connector.Error as error:
     print("Error fetching data from MySQL database:", error)
 
-finally:
-    if cursor:
-        cursor.close()
-    if db_connection:
-        db_connection.close()
+# finally:
+#     if cursor:
+#         cursor.close()
+#     if db_connection:
+#         db_connection.close()

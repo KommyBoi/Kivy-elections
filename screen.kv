@@ -8,9 +8,13 @@ WindowManager:
     JHeads:
     AgniSr:
     AgniJr:
+    PrithviSr:
+    PrithviJr:
     SuryaSr:
+    SuryaJr:
     VarunSr:
     VarunJr:
+    EndScreen:
 
 <GrNo>:
     name: "GrNo"
@@ -115,7 +119,7 @@ WindowManager:
                 background_normal: "images/Shruti G-1.jpg"
                 background_down: "images/Shruti G-2.jpg"
                 font_size: 30
-                on_state: app.options.HandleOptionG('HG-1', self.state)
+                on_state: app.options.HandleOptionG('HG-2', self.state)
             Widget:
                 size_hint_x: 0.4    
             ToggleButton:
@@ -126,7 +130,7 @@ WindowManager:
                 height: 300
                 background_normal: "images/Sanvi K-1.jpg"
                 background_down: "images/Sanvi K-2.jpg" 
-                on_state: app.options.HandleOptionG('HG-2', self.state)
+                on_state: app.options.HandleOptionG('HG-1', self.state)
 
             Widget:
                 size_hint_x: 0.1
@@ -137,7 +141,7 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG();  app.options.PopUpH()
+                on_release: app.options.PopUpH(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
@@ -240,7 +244,7 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG(); app.options.PopUpVH()
+                on_release: app.options.PopUpVH(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
@@ -279,8 +283,8 @@ WindowManager:
                 height: 325
                 group: 'JHB'
                 id: JHB-1
-                background_normal: "#" #Neel deshpande
-                background_down: "#"
+                background_normal: "images/Neel D-1.jpg" #Neel deshpande
+                background_down: "images/Neel D-2.jpg"
                 font_size: 30
                 on_state: app.options.HandleOptionB('JHB-1', self.state)
             Widget: 
@@ -289,14 +293,14 @@ WindowManager:
                 width: 340
                 height: 325
                 size_hint: (None, None)
-                group: 'VHB'  # Group for headgirl options
-                id: VHB-2
-                background_normal: "#" # Shashank Jamle
-                background_down: "#" 
+                group: 'JHB'  # Group for headgirl options
+                id: JHB-2
+                background_normal: "images/Shashank J-1.jpg" # Shashank Jamle
+                background_down: "images/Shashank J-2.jpg" 
                 font_size: 30
                 valign: 'bottom'
                 halign: 'center'
-                on_state: app.options.HandleOptionB('VHB-2', self.state)
+                on_state: app.options.HandleOptionB('JHB-2', self.state)
                 padding_x: 50
             Widget:
                 size_hint_x: 0.1
@@ -318,8 +322,8 @@ WindowManager:
                 height: 300
                 group: 'JHG'  # Group for headgirl options
                 id: JHG-1
-                background_normal: "#" # Ira Joshi
-                background_down: "#" 
+                background_normal: "images/IRA J-1.jpg" # Ira Joshi
+                background_down: "images/IRA J-2.jpg" 
                 font_size: 30
                 on_state: app.options.HandleOptionG('JHG-1', self.state)
             Widget:
@@ -343,7 +347,7 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG(); app.options.PopUpJH()
+                on_release: app.options.PopUpJH(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
@@ -380,7 +384,7 @@ WindowManager:
                 size_hint: (None, None)
                 width: 340
                 height: 325
-                group: 'HB'
+                group: 'HCB'
                 id: HCB-A-1
                 background_normal: "images/Adityaraj J-1.jpg"
                 background_down: "images/Adityaraj J-2.jpg"
@@ -392,7 +396,7 @@ WindowManager:
                 width: 340
                 height: 325
                 size_hint: (None, None)
-                group: 'HB'  # Group for headgirl options
+                group: 'HCB'  # Group for headgirl options
                 id: HCB-A-2
                 background_normal: "images/Vedang K-1.jpg" 
                 background_down: "images/Vedang K-2.jpg" 
@@ -419,7 +423,7 @@ WindowManager:
                 size_hint: (None,None)
                 width: 340
                 height: 300
-                group: 'HG'  # Group for headgirl options
+                group: 'HCG'  # Group for headgirl options
                 id: HCG-A-1
                 background_normal: "images/Mitali M-1.jpg"
                 background_down: "images/Mitali M-2.jpg"
@@ -428,7 +432,7 @@ WindowManager:
             Widget:
                 size_hint_x: 0.4    
             ToggleButton:
-                group: 'HG'  # Group for headgirl options
+                group: 'HCG'  # Group for headgirl options
                 id: HCG-A-2
                 size_hint: (None,None)
                 width: 340
@@ -447,7 +451,7 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG();  app.options.PopUpA()
+                on_release: app.options.PopUpA(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
@@ -468,22 +472,25 @@ WindowManager:
         Label:
             text: "ELECTIONS 2024-25" 
             font_size: 55
-        Label:
-            text: "SR. SPORTS CAPTAIN BOY"
-            font_size: 50
-            size_hint_y: 0.9
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "JR. SPORTS CAPTAIN BOY"
+                font_size: 50
+                size_hint_y: None
+                height: 200
         Widget:
-            size_hint_y: 0.8
+            size_hint_y: 1
         BoxLayout:
             padding: 10
-            spacing: 250 
+            spacing: 150
             orientation: "horizontal"
             Widget:
-                size_hint_y: 0.1
+                size_hint_x: 0.45
             ToggleButton:
                 size_hint: (None, None)
                 width: 340
-                height: 325
+                height: 300
                 group: 'JHCB'
                 id: JHCB-A-1
                 background_normal: "images/Manas B-1.jpg"
@@ -493,60 +500,63 @@ WindowManager:
             ToggleButton:
                 size_hint: (None, None)
                 width: 340
-                height: 325
+                height: 300
                 group: 'JHCB'
-                id: JHCB-A-3
-                background_normal: "images/Atharva L-1.jpg"
-                background_down: "images/Atharva L-2.jpg"
+                id: JHCB-A-2
+                background_normal: "images/Shridhar M-1.jpg"
+                background_down: "images/Shridhar M-2.jpg"
                 font_size: 30
-                on_state: app.options.HandleOptionB('JHCB-A-3', self.state)
+                on_state: app.options.HandleOptionB('JHCB-A-2', self.state)
             ToggleButton:
                 width: 340
-                height: 325
+                height: 300
                 size_hint: (None, None)
                 group: 'JHCB'  # Group for headgirl options
-                id: JHCB-A-2
-                background_normal: "images/Shridhar M-1.jpg" 
-                background_down: "images/Shridhar M-2.jpg" 
+                id: JHCB-A-3
+                background_normal: "images/Atharva L-1.jpg" 
+                background_down: "images/Atharva L-2.jpg" 
                 font_size: 30
                 valign: 'bottom'
                 halign: 'center'
-                on_state: app.options.HandleOptionB('HCB-A-2', self.state)
-                padding_x: 50
+                on_state: app.options.HandleOptionB('JHCB-A-3', self.state)
+                padding_x: 25
             Widget:
-                size_hint_y: 0.1
+                size_hint_y: 0.1                
+                size_hint_x:                 
         Widget:
-            size_hint_y: 0.2
-            size_hint_x: 0.1
-        Label: 
-            text: "SR. SPORTS CAPTAIN GIRL"
-            font_size: 50
+            size_hint_y: 0.6
+            size_hint_x: 0.4
+        BoxLayout:
+            orientation: "vertical" 
+            Label: 
+                text: "JR. SPORTS CAPTAIN GIRL"
+                font_size: 50
         BoxLayout:
             orientation: "horizontal"
             Widget:
-                size_hint_x: 0.12
+                size_hint_x: 0.1
                 size_hint_y: 0.1
             ToggleButton:
                 size_hint: (None,None)
                 width: 340
-                height: 300
-                group: 'HG'  # Group for headgirl options
-                id: HCG-A-1
-                background_normal: "images/Mitali M-1.jpg"
-                background_down: "images/Mitali M-2.jpg"
+                height: 285
+                group: 'JHCG'  # Group for headgirl options
+                id: JHCG-A-1
+                background_normal: "images/Sachi P-1.jpg"
+                background_down: "images/Sachi P-2.jpg"
                 font_size: 30
-                on_state: app.options.HandleOptionG('HCG-A-1', self.state)
+                on_state: app.options.HandleOptionG('JHCG-A-1', self.state)
             Widget:
                 size_hint_x: 0.4    
             ToggleButton:
-                group: 'HG'  # Group for headgirl options
-                id: HCG-A-2
+                group: 'JHCG'  # Group for headgirl options
+                id: JHCG-A-2
                 size_hint: (None,None)
                 width: 340
-                height: 300
-                background_normal: "images/Aarya B-1.jpg"
-                background_down: "images/Aarya B-2.jpg" 
-                on_state: app.options.HandleOptionG('HCG-A-2', self.state)
+                height: 285
+                background_normal: "images/Ramya S-1.jpg"
+                background_down: "images/Ramya S-2.jpg" 
+                on_state: app.options.HandleOptionG('JHCG-A-2', self.state)
                 on_select: 
 
             Widget:
@@ -558,7 +568,232 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG();  app.options.PopUpA()
+                on_release: app.options.EndScreen(); app.database.voteUpdateB(); app.database.voteUpdateG()
+                size_hint_y: (0.5)
+            Widget:
+                size_hint_y: 0.1
+                size_hint_x: 0.6
+
+<PrithviSr>: 
+    canvas.before:
+        Color:
+            rgba: 0, 1, 0, 1  # red color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    name: "PrithviSr"
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "ELECTIONS 2024-25" 
+            font_size: 55
+
+        Widget:
+            size_hint_y: 0.4
+        Label:
+            text: "SR. SPORTS CAPTAIN BOY"
+            font_size: 50
+        
+        BoxLayout:
+            padding: 20
+            spacing: 15 
+            orientation: "horizontal"
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+            ToggleButton:
+                size_hint: (None, None)
+                width: 340
+                height: 325
+                group: 'HCB'
+                id: HCB-P-1
+                background_normal: "images/Ishant S -1.jpg"
+                background_down: "images/Ishant S -2.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionB('HCB-P-1', self.state)
+            Widget: 
+                size_hint_x: 0.5
+            ToggleButton:
+                width: 340
+                height: 325
+                size_hint: (None, None)
+                group: 'HCB'  # Group for headgirl options
+                id: HCB-P-2
+                background_normal: "images/Sahil D-1.jpg" 
+                background_down: "images/Sahil D-2.jpg" 
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionB('HCB-P-2', self.state)
+                padding_x: 50
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+        Widget:
+            size_hint_y: 1
+            size_hint_x: 0.1
+        Label: 
+            text: "SR. SPORTS CAPTAIN GIRL"
+            font_size: 50
+        BoxLayout:
+            orientation: "horizontal"
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+            ToggleButton:
+                size_hint: (None,None)
+                width: 340
+                height: 300
+                group: 'HCG'  # Group for headgirl options
+                id: HCG-V-1
+                background_normal: "images/Sanchi B-1.jpg"
+                background_down: "images/Sanchi B-2.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionG('HCG-P-1', self.state)
+            Widget:
+                size_hint_x: 0.4    
+            ToggleButton:
+                group: 'HCG'  # Group for headgirl options
+                id: HCG-P-2
+                size_hint: (None,None)
+                width: 340
+                height: 300
+                background_normal: "images/Shauryaa M-1.jpg"
+                background_down: "images/Shauryaa M-2.jpg" 
+                on_state: app.options.HandleOptionG('HCG-P-2', self.state)
+                on_select: 
+
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+        BoxLayout:
+            Widget:
+                size_hint_y: 0.1
+                size_hint_x: 0.6
+            Button:
+                text: "NEXT"
+                on_release: app.options.PopUpP(); app.database.voteUpdateB(); app.database.voteUpdateG()
+                size_hint_y: (0.5)
+            Widget:
+                size_hint_y: 0.1
+                size_hint_x: 0.6
+
+
+<PrithviJr>: 
+    canvas.before:
+        Color:
+            rgba: 0, 1, 0, 1  # red color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    name: "PrithviJr"
+    Widget:
+        size_hint_y:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "ELECTIONS 2024-25" 
+            font_size: 55
+
+        Widget:
+            size_hint_y: 0.4
+        Label:
+            text: "SR. SPORTS CAPTAIN BOY"
+            font_size: 50
+        
+        BoxLayout:
+            padding: 20
+            spacing: 15 
+            orientation: "horizontal"
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+            ToggleButton:
+                size_hint: (None, None)
+                width: 340
+                height: 325
+                group: 'HCB'
+                id: JHCB-P-1
+                background_normal: "images/Atharva S-1.jpg"
+                background_down: "images/Atharva S-2.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionB('JHCB-P-1', self.state)
+            Widget: 
+                size_hint_x: 0.5
+            ToggleButton:
+                width: 340
+                height: 325
+                size_hint: (None, None)
+                group: 'HCB'  
+                id: JHCB-P-2
+                background_normal: "images/Siddhant K-1.jpg" 
+                background_down: "images/Siddhant K-2.jpg" 
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionB('JHCB-P-2', self.state)
+                padding_x: 50
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1           
+        Widget:
+            size_hint_y: 0.6
+            size_hint_x: 0.4
+        BoxLayout:
+            orientation: "vertical" 
+            Label: 
+                text: "JR. SPORTS CAPTAIN GIRL"
+                font_size: 50
+                size_hint_y: None
+                height: 400
+        BoxLayout:
+            spacing: 140
+            padding: 20
+            orientation: "horizontal"
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+            ToggleButton:
+                size_hint: (None,None)
+                width: 340
+                height: 285
+                group: 'JHCG'  # Group for headgirl options
+                id: JHCG-P-1
+                background_normal: "images/TEJAL B-1.jpg"
+                background_down: "images/TEJAL B-2.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionG('JHCG-A-1', self.state)
+            ToggleButton:
+                size_hint: (None,None)
+                width: 340
+                height: 285
+                group: 'JHCG'  # Group for headgirl options
+                id: JHCG-P-2
+                background_normal: "images/Saie P-1.jpg"
+                background_down: "images/Saie P-2.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionG('JHCG-P-2', self.state)
+            ToggleButton:
+                group: 'JHCG'  # Group for headgirl options
+                id: JHCG-P-3
+                size_hint: (None,None)
+                width: 340
+                height: 285
+                background_normal: "images/Shripada D-1.jpg"
+                background_down: "images/Shripada D-2.jpg" 
+                on_state: app.options.HandleOptionG('JHCG-P-3', self.state)
+                on_select: 
+
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.4
+        BoxLayout:
+            Widget:
+                size_hint_y: 0.1
+                size_hint_x: 0.6
+            Button:
+                text: "NEXT"
+                on_release: app.options.EndScreen(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
@@ -634,7 +869,7 @@ WindowManager:
                 size_hint: (None,None)
                 width: 340
                 height: 300
-                group: 'HG'  # Group for headgirl options
+                group: 'HCG'  # Group for headgirl options
                 id: HCG-S-1
                 background_normal: "images/Siya N-1.jpg"
                 background_down: "images/Siya N-2.jpg"
@@ -650,7 +885,111 @@ WindowManager:
                 height: 300
                 background_normal: "images/Aarya G-1.jpg"
                 background_down: "images/Aarya G-2.jpg" 
-                on_state: app.options.HandleOptionG('HCG-A-2', self.state)
+                on_state: app.options.HandleOptionG('HCG-S-2', self.state)
+
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+        BoxLayout:
+            Widget:
+                size_hint_y: 0.1
+                size_hint_x: 0.6
+            Button:
+                text: "NEXT"
+                on_release: app.options.PopUpS(); app.database.voteUpdateB(); app.database.voteUpdateG()
+                size_hint_y: (0.5)
+            Widget:
+                size_hint_y: 0.1
+                size_hint_x: 0.6
+
+
+<SuryaJr>: 
+    canvas.before:
+        Color:
+            rgba:   0.9, 0.8, 0.02, 1  # red color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    name: "SuryaJr"
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "ELECTIONS 2024-25" 
+            font_size: 55
+
+        Widget:
+            size_hint_y: 0.4
+        Label:
+            text: "SR. SPORTS CAPTAIN BOY"
+            font_size: 50
+        
+        BoxLayout:
+            padding: 20
+            spacing: 15 
+            orientation: "horizontal"
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+            ToggleButton:
+                size_hint: (None, None)
+                width: 340
+                height: 325
+                group: 'JHCB'
+                id: JHCB-S-1
+                background_normal: "images/Swanand P-1.jpg"
+                background_down: "images/Swanand P-2.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionB('JHCB-S-1', self.state)
+            Widget: 
+                size_hint_x: 0.5
+            ToggleButton:
+                width: 340
+                height: 325
+                size_hint: (None, None)
+                group: 'JHCB'  
+                id: JHCB-S-2
+                background_normal: "images/Rudra K-1.jpg" 
+                background_down: "images/Rudra K-2.jpg" 
+                font_size: 30
+                valign: 'bottom'
+                halign: 'center'
+                on_state: app.options.HandleOptionB('JHCB-S-2', self.state)
+                padding_x: 50
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+        Widget:
+            size_hint_y: 1
+            size_hint_x: 0.1
+        Label: 
+            text: "SR. SPORTS CAPTAIN GIRL"
+            font_size: 50
+        BoxLayout:
+            orientation: "horizontal"
+            Widget:
+                size_hint_x: 0.1
+                size_hint_y: 0.1
+            ToggleButton:
+                size_hint: (None,None)
+                width: 340
+                height: 300
+                group: 'JHCG'  # Group for headgirl options
+                id: JHCG-S-1
+                background_normal: "images/IRA K-1.jpg"
+                background_down: "images/IRA K-2.jpg"
+                font_size: 30
+                on_state: app.options.HandleOptionG('JHCG-S-1', self.state)
+            Widget:
+                size_hint_x: 0.4    
+            ToggleButton:
+                group: 'JHCG'  # Group for headgirl options
+                id: JHCG-V-2
+                size_hint: (None,None)
+                width: 340      
+                height: 300
+                background_normal: "images/Dhanya M-1.jpg"
+                background_down: "images/Dhanya M-2.jpg" 
+                on_state: app.options.HandleOptionG('JHCG-S-2', self.state)
                 on_select: 
 
             Widget:
@@ -662,12 +1001,11 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG();  app.options.PopUp()
+                on_release: app.options.EndScreen(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
                 size_hint_x: 0.6
-
 
 <VarunSr>: 
     canvas.before:
@@ -712,14 +1050,14 @@ WindowManager:
                 width: 340
                 height: 325
                 size_hint: (None, None)
-                group: 'HCB'  # Group for headgirl options
+                group: 'HCB'  
                 id: HCB-A-2
-                background_normal: "images/Archit B-1.jpg" 
-                background_down: "images/Archit B-2.jpg" 
+                background_normal: "images/Archiit B-1.jpg" 
+                background_down: "images/Archiit B-2.jpg" 
                 font_size: 30
                 valign: 'bottom'
                 halign: 'center'
-                on_state: app.options.HandleOptionB('HCB-A-2', self.state)
+                on_state: app.options.HandleOptionB('HCB-V-2', self.state)
                 padding_x: 50
             Widget:
                 size_hint_x: 0.1
@@ -767,7 +1105,7 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG();  app.options.PopUpV()
+                on_release: app.options.PopUpV(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
@@ -818,13 +1156,13 @@ WindowManager:
                 height: 325
                 size_hint: (None, None)
                 group: 'JHCB'  # Group for headgirl options
-                id: JHCB-A-2
+                id: JHCB-V-2
                 background_normal: "images/Vallabh M-1.jpg" 
                 background_down: "images/Vallabh M-2.jpg" 
                 font_size: 30
                 valign: 'bottom'
                 halign: 'center'
-                on_state: app.options.HandleOptionB('JHCB-A-2', self.state)
+                on_state: app.options.HandleOptionB('JHCB-V-2', self.state)
                 padding_x: 50
             Widget:
                 size_hint_x: 0.1
@@ -845,7 +1183,7 @@ WindowManager:
                 width: 340
                 height: 300
                 group: 'JHCG'  # Group for headgirl options
-                id: HCG-V-1
+                id: JHCG-V-1
                 background_normal: "images/Dwiti S-1.jpg"
                 background_down: "images/Dwiti S-2.jpg"
                 font_size: 30
@@ -872,11 +1210,20 @@ WindowManager:
                 size_hint_x: 0.6
             Button:
                 text: "NEXT"
-                on_release: app.database.voteUpdateB(); app.database.voteUpdateG();  app.options.PopUpV()
+                on_release: app.options.EndScreen(); app.database.voteUpdateB(); app.database.voteUpdateG()
                 size_hint_y: (0.5)
             Widget:
                 size_hint_y: 0.1
                 size_hint_x: 0.6
 
 
-
+<EndScreen>:
+    name: "EndScreen"
+    BoxLayout:
+        orientation: 'vertical'
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Label:
+                text: 'Thank you for voting !'
+                font_size: 50
